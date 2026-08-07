@@ -3,11 +3,36 @@
 <div id="bar">
   <img src="img.png" alt="img.png не загрузился.">
 
-  <center><div class="bar-content-right">
+  <div class="bar-content-right">
     
     <div class="bar-buttons">
       <button id="btn-action-1" class="bar-btn">&#8635;</button>
-      <button id="btn-action-2" class="bar-btn">&#9788;</button>
+
+      <button id="theme-toggle" class="bar-btn">&#9788;</button>
+      <script>
+  const themeButton = document.getElementById('theme-toggle');
+
+  function applyTheme(theme) {
+    if (theme === 'dark') {
+      document.body.style.backgroundColor = '#1a1a1a'; 
+      document.body.style.color = '#f5f5f5';         
+    } else {
+      document.body.style.backgroundColor = '#ffffff'; 
+      document.body.style.color = '#333333';         
+    }
+  }
+
+  const savedTheme = localStorage.getItem('site-theme') || 'light';
+  applyTheme(savedTheme);
+
+  themeButton.addEventListener('click', () => {
+    const currentTheme = localStorage.getItem('site-theme') || 'light';
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    
+    localStorage.setItem('site-theme', newTheme);
+    applyTheme(newTheme);
+  });
+</script>
     </div>
 
     <div class="site-search-box">
@@ -15,11 +40,10 @@
       <button id="search-submit-btn" aria-label="Поиск">🔍</button> 
     </div>
 
-  </div></center>
+  </div>
 </div>
 
 <style>
-
 #bar {
   display: flex;
   align-items: center; 
