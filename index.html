@@ -138,17 +138,20 @@
     <h3 class="widget-title">BlackMAX <span class="verified-badge">&#10004;</span></h3>
     <p class="widget-description">Мод на мессенджер MAX. <a href="https://github.com/codedroider/blackmax">Подробнее...</a></p>
   </div>
-  <button onclick="blackmax" class="widget-button download-btn">Скачать</button>
-  <script id="blackmax">
-const newWindow = window.open('https://github.com/codedroider/BlackMAX/releases/download/26.24.0/BlackMAX-26.24.0.1.apk', '_blank');
+  <button onclick="blackmax()" class="widget-button download-btn">Скачать</button>
 
-setTimeout(() => {
-    if (newWindow) {
-        newWindow.close();
-    }
-}, 3000);
-  </script>
-    
+<script id="blackmax">
+function blackmax() {
+    const newWindow = window.open('https://github.com/codedroider/BlackMAX/releases/download/26.24.0/BlackMAX-26.24.0.1.apk', '_blank');
+
+    setTimeout(() => {
+        if (newWindow) {
+            newWindow.close();
+        }
+    }, 3000); 
+}
+</script>
+  
 </div>
 
 <center><iframe 
