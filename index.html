@@ -1,0 +1,133 @@
+
+<div class="download-widget">
+  <div class="widget-content">
+    <h3 class="widget-title">Программа №1</h3>
+    <p class="widget-description">Описание первого файла или утилиты.</p>
+  </div>
+  <button data-href="https://example.com" class="widget-button download-btn">Скачать</button>
+</div>
+
+<div class="download-widget">
+  <div class="widget-content">
+    <h3 class="widget-title">Документ №2</h3>
+    <p class="widget-description">Описание второго важного файла.</p>
+  </div>
+  <button data-href="https://example.com" class="widget-button download-btn">Скачать</button>
+</div>
+
+<div class="download-widget">
+  <div class="widget-content">
+    <h3 class="widget-title">Архив №3</h3>
+    <p class="widget-description">Описание третьего скачиваемого архива.</p>
+  </div>
+  <button data-href="https://example.com" class="widget-button download-btn">Скачать</button>
+</div>
+
+
+<style>
+  .download-widget {
+    margin-bottom: 16px; 
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 500px;
+    padding: 16px;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+
+  .widget-content {
+    flex: 1;
+    margin-right: 16px;
+  }
+
+  .widget-title {
+    margin: 0 0 4px 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #000000;
+  }
+
+  .widget-description {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #666666;
+  }
+
+  .widget-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #0066cc;
+    color: #ffffff;
+    border: none;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .widget-button:hover {
+    background-color: #0052a3;
+  }
+
+  .widget-button.loading {
+    background-color: #cccccc !important;
+    color: #666666;
+    cursor: not-allowed;
+  }
+
+  @media (max-width: 480px) {
+    .download-widget {
+      flex-direction: column;
+      align-items: stretch;
+      text-align: center;
+    }
+
+    .widget-content {
+      margin-right: 0;
+      margin-bottom: 16px;
+    }
+  }
+</style>
+
+
+<script>
+  document.querySelectorAll('.download-btn').forEach(function(btn) {
+    
+    btn.addEventListener('click', function() {
+      const currentBtn = this;
+      
+    
+      if (currentBtn.classList.contains('loading')) return;
+
+      const fileUrl = currentBtn.getAttribute('data-href');
+
+      
+      currentBtn.classList.add('loading');
+      currentBtn.textContent = 'Скачивание началось...';
+
+      
+      const iframe = document.createElement('iframe');
+      iframe.style.display = 'none';
+      iframe.src = fileUrl;
+      document.body.appendChild(iframe);
+
+      setTimeout(() => {
+        currentBtn.classList.remove('loading');
+        currentBtn.textContent = 'Скачать';
+        
+        if (document.body.contains(iframe)) {
+          document.body.removeChild(iframe);
+        }
+      }, 3000);
+    });
+    
+  });
+</script>
