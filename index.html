@@ -1,12 +1,39 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<div id="bar"><img src="img.png"></img>
-<div class="site-search-box">
-  <input type="text" id="search-input" placeholder="Найти..." />
-  <button id="search-submit-btn" aria-label="Поиск">&#128269;</button> 
-</div></div>
+<div id="bar">
+  <img src="img.png" alt="codestore">
+
+  <div class="bar-buttons">
+    <button id="btn-action-1" class="bar-btn">Обновить репозиторий</button>
+    <button id="btn-action-2" class="bar-btn">Сменить тему</button>
+  </div>
+
+  <div class="site-search-box">
+    <input type="text" id="search-input" placeholder="Найти..." />
+    <button id="search-submit-btn" aria-label="Поиск">🔍</button> 
+  </div>
+</div>
 
 <style>
+.bar-buttons {
+  display: flex;
+  gap: 10px;          
+  margin-bottom: 8px; 
+}
+
+.bar-btn {
+  padding: 6px 12px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.bar-btn:hover {
+  background-color: #e0e0e0; 
+}
+
   .site-search-box {
     display: inline-flex;
     align-items: center;
