@@ -1,6 +1,94 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<div id="bar"><img src="img.png"></img></div>
+<div id="bar"><img src="img.png"></img>
+<div class="site-search-box">
+  <input type="text" id="search-input" placeholder="Найти..." />
+  <button id="search-submit-btn" aria-label="Поиск">&#8949;</button> 
+</div></div>
+
+<style>
+  .site-search-box {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 6px 12px;
+    background: #fff;
+    max-width: 300px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    margin-bottom: 20px;
+  }
+
+  .site-search-box input {
+    border: none;
+    outline: none;
+    font-size: 14px;
+    width: 100%;
+    padding: 2px;
+  }
+
+  .site-search-box button {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 0 0 0 6px;
+    color: #0066cc;
+    transition: transform 0.1s ease;
+    line-height: 1;
+  }
+
+  .site-search-box button:hover {
+    transform: scale(1.1);
+  }
+  
+  .widget-blink {
+    outline: 3px solid #0066cc !important;
+    outline-offset: -3px;
+    box-shadow: 0 0 15px rgba(0, 102, 204, 0.3) !important;
+    transition: all 0.2s ease;
+  }
+</style>
+
+<script>
+  document.getElementById('search-submit-btn').addEventListener('click', doWidgetScroll);
+  
+  document.getElementById('search-input').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+      doWidgetScroll();
+    }
+  });
+
+  function doWidgetScroll() {
+    const query = document.getElementById('search-input').value.trim().toLowerCase();
+    if (!query) return;
+
+    document.querySelectorAll('.download-widget').forEach(w => w.classList.remove('widget-blink'));
+
+    const widgets = document.querySelectorAll('.download-widget');
+    let targetWidget = null;
+
+    for (let widget of widgets) {
+      if (widget.textContent.toLowerCase().includes(query)) {
+        targetWidget = widget;
+        break;
+      }
+    }
+
+    if (targetWidget) {
+      targetWidget.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      
+      targetWidget.classList.add('widget-blink');
+      setTimeout(() => {
+        targetWidget.classList.remove('widget-blink');
+      }, 2000);
+    } else {
+      alert('Ничего не найдено');
+    }
+  }
+</script>
+
 
 <div class="download-widget">
   <div class="widget-content">
