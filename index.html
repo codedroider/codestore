@@ -10,38 +10,25 @@
 
       <button id="theme-toggle" class="bar-btn">&#9788;</button>
       <script>
-  function applyTheme(theme) {
-  const isDark = theme === 'dark';
-  
-  const bgColor = isDark ? '#1a1a1a' : '#ffffff';
-  const textColor = isDark ? '#f5f5f5' : '#333333';
-  
-  const widgetBg = isDark ? '#2d2d2d' : '#ffffff';
-  const borderColor = isDark ? '#444444' : '#e0e0e0';
+        <script>
+  const themeButton = document.getElementById('theme-toggle');
 
-  document.body.style.backgroundColor = bgColor;
-  document.body.style.color = textColor;
+  if (localStorage.getItem('site-theme') === 'dark') {
+    document.body.classList.add('dark-theme');
+  }
 
-  const blocks = document.querySelectorAll('div, main, section, header, p');
-  blocks.forEach(block => {
-      block.style.backgroundColor = bgColor;
-      block.style.color = textColor;
+  themeButton.addEventListener('click', () => {
+    document.body.classList.toggle('dark-theme');
+    
+    if (document.body.classList.contains('dark-theme')) {
+      localStorage.setItem('site-theme', 'dark');
+    } else {
+      localStorage.setItem('site-theme', 'light');
+    }
   });
-
-  const widgets = document.querySelectorAll('button, input, .site-search-box, [class*="widget"]');
-  
-  widgets.forEach(element => {
-      element.style.backgroundColor = widgetBg;
-      element.style.borderColor = borderColor;
-      element.style.color = textColor;
-      
-      if (element.id === 'search-submit-btn') {
-          element.style.backgroundColor = 'transparent';
-      }
-  });
-}
-
 </script>
+
+      </script>
     </div>
 
     <div class="site-search-box">
@@ -123,6 +110,24 @@
     box-shadow: 0 0 15px rgba(0, 102, 204, 0.3) !important;
     transition: all 0.2s ease;
   }
+body.dark-theme {
+  background-color: #1a1a1a !important;
+  color: #f5f5f5 !important;
+}
+
+body.dark-theme button, 
+body.dark-theme input, 
+body.dark-theme .site-search-box, 
+body.dark-theme [class*="widget"] {
+  background-color: #2d2d2d !important;
+  color: #f5f5f5 !important;
+  border-color: #444444 !important;
+}
+
+body.dark-theme #search-submit-btn {
+  background: none !important;
+}
+
 </style>
 
 <script>
