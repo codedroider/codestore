@@ -1,37 +1,50 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <div id="bar">
-  <img src="img.png" alt="codestore">
+  <img src="img.png" alt="img.png не загрузился.">
 
-  <div class="bar-buttons">
-    <button id="btn-action-1" class="bar-btn">&#10227;</button>
-    <button id="btn-action-2" class="bar-btn">&#9728;</button>
-  </div>
+  <div class="bar-content-right">
+    
+    <div class="bar-buttons">
+      <button id="btn-action-1" class="bar-btn">&#8635;</button>
+      <button id="btn-action-2" class="bar-btn">&#9788;</button>
+    </div>
 
-  <div class="site-search-box">
-    <input type="text" id="search-input" placeholder="Найти..." />
-    <button id="search-submit-btn" aria-label="Поиск">🔍</button> 
+    <div class="site-search-box">
+      <input type="text" id="search-input" placeholder="Найти..." />
+      <button id="search-submit-btn" aria-label="Поиск">🔍</button> 
+    </div>
+
   </div>
 </div>
 
 <style>
+
+#bar {
+  display: flex;
+  align-items: center; 
+  gap: 15px;           
+}
+
+.bar-content-right {
+  display: flex;
+  flex-direction: column; 
+  align-items: flex-start;
+}
+
 .bar-buttons {
   display: flex;
-  gap: 10px;          
-  margin-bottom: 8px; 
+  gap: 8px;           
+  margin-bottom: 4px;
 }
 
 .bar-btn {
-  padding: 6px 12px;
-  background-color: #f0f0f0;
-  border: 1px solid #ccc;
+  padding: 4px 8px;
+  font-size: 11px;
+  background: #fff;
+  border: 1px solid #e0e0e0;
   border-radius: 4px;
   cursor: pointer;
-  font-size: 14px;
-}
-
-.bar-btn:hover {
-  background-color: #e0e0e0; 
 }
 
   .site-search-box {
