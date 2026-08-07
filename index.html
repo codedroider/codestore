@@ -10,28 +10,37 @@
 
       <button id="theme-toggle" class="bar-btn">&#9788;</button>
       <script>
-  const themeButton = document.getElementById('theme-toggle');
-
   function applyTheme(theme) {
-    if (theme === 'dark') {
-      document.body.style.backgroundColor = '#1a1a1a'; 
-      document.body.style.color = '#f5f5f5';         
-    } else {
-      document.body.style.backgroundColor = '#ffffff'; 
-      document.body.style.color = '#333333';         
-    }
-  }
+  const isDark = theme === 'dark';
+  
+  const bgColor = isDark ? '#1a1a1a' : '#ffffff';
+  const textColor = isDark ? '#f5f5f5' : '#333333';
+  
+  const widgetBg = isDark ? '#2d2d2d' : '#ffffff';
+  const borderColor = isDark ? '#444444' : '#e0e0e0';
 
-  const savedTheme = localStorage.getItem('site-theme') || 'light';
-  applyTheme(savedTheme);
+  document.body.style.backgroundColor = bgColor;
+  document.body.style.color = textColor;
 
-  themeButton.addEventListener('click', () => {
-    const currentTheme = localStorage.getItem('site-theme') || 'light';
-    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-    
-    localStorage.setItem('site-theme', newTheme);
-    applyTheme(newTheme);
+  const blocks = document.querySelectorAll('div, main, section, header, p');
+  blocks.forEach(block => {
+      block.style.backgroundColor = bgColor;
+      block.style.color = textColor;
   });
+
+  const widgets = document.querySelectorAll('button, input, .site-search-box, [class*="widget"]');
+  
+  widgets.forEach(element => {
+      element.style.backgroundColor = widgetBg;
+      element.style.borderColor = borderColor;
+      element.style.color = textColor;
+      
+      if (element.id === 'search-submit-btn') {
+          element.style.backgroundColor = 'transparent';
+      }
+  });
+}
+
 </script>
     </div>
 
