@@ -186,6 +186,27 @@ function blackmax() {
 </script>
   
 </div>
+<div class="download-widget">
+  <div class="widget-content">
+    <h3 class="widget-title">PortCraft <span class="verified-badge">&#10004;</span></h3>
+    <p class="widget-description">Оптимизированный клиент MCPE (1.21). <a href="https://github.com/codedroider/portcraft">Подробнее...</a></p>
+  </div>
+  <button onclick="portcraft()" class="widget-button download-btn">Скачать</button>
+
+<script id="portcraft">
+function portcraft() {
+    const newWindow = window.open('https://github.com/codedroider/PortCraft/releases/download/stable/PortCraft.1.21.132.1.apk', '_blank');
+
+    setTimeout(() => {
+        if (newWindow) {
+            newWindow.close();
+        }
+    }, 3000); 
+}
+</script>
+  
+</div>
+
 
 <center><iframe 
     src="https://codebanners.neocities.org/1banner" 
